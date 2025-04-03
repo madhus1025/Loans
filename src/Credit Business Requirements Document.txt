@@ -1,0 +1,132 @@
+﻿Personal and GST Invoice based unsecured loans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Version History
+	Version
+	Description
+	Revision date
+	Author
+	1.0
+	Requirements for individual and MSME loans
+	10/05/2023
+	Antriksh Parmar
+	1.1
+	Adding requirements for loan status check, loan details update, and loan application cancellation. Refer to the 'Additional Requirements' section for details
+	18/05/2023
+	Antriksh Parmar
+	1.2
+	Adding buyer finder fees under Additional Requirements
+	09/10/2023
+	Antriksh Parmar
+	1.3
+	Removed Analytics Requirements & dedupe check since it’s not in the scope of this BRD
+	21/11/2023
+	Antriksh Parmar
+	1.4
+	Added detailed pre/late payment requirements and SIDBI dedupe registry.
+	23/02/2024
+	Antriksh Parmar
+	1.5
+	Added consent language
+	12/02/2025
+	Antriksh Parmar
+	Scope
+The scope of this iteration is to create API specifications for two credit products: unsecured personal loans for individuals and GST data based invoice financing for sole proprietors. This covers both, NTB as well as ETB customers.
+We will support three key use cases: Straight-Through Processing (STP) for loan applications, loan summary/loan management, and prepayment of loans. 
+Additionally, we will include lender APIs to capture real-time lending data.
+
+Participants
+* Sellers/lenders should be RBI-registered 'Regulated Entities', such as Scheduled Commercial Banks (SCBs), Non-Banking Financial Companies (NBFCs), Primary (Urban) Co-operative Banks (UCBs), and Regional Rural Banks (RRBs).
+* Buyer apps can be any application as long as prevailing guidelines issued by RBI are adhered to.
+* RBI licensed account aggregators (AA) including but not limited to Finvu and Onemoney.  AAs allow borrowers to share their bank statements electronically with lenders. Other data will be made available over time.
+* GSTN authorised GST Suvidha Providers (GSPs). Buyer apps will directly connect with GSPs to retrieve GST returns.
+* UIDAI and Digilocker for eKYC, Udyam Certificate and eSign as applicable.
+* RBI regulated Credit Information Companies, for borrowers’ credit history.
+Requirements
+User Journey
+Registration and Loan Application (Sole proprietors)
+* A sole proprietor must enable GST API access in the GSTN portal is a prerequisite for applying for an unsecured loan. This needs to be communicated by the buyer app.
+* The borrower - in this case a sole proprietor - begins by sharing their GSTN details (GSTIN and GST username) and mobile number on the buyer application.
+* The buyer app verifies the phone number with an OTP and obtains data access authorization from GSP through OTP verification on the number linked to the GST profile.
+* The buyer app needs to obtain consents to share borrowers’ GST data with the lender, and allow the lender to retrieve their credit file from the credit bureau.
+* The buyer app retrieves the following information from GSP.
+   * GSTN public profile
+   * GSTR-1 CDNR
+   * GSTR-1 B2B Invoice
+   * GSTR-2A B2B Invoices
+   * GSTR-3B Summary
+* The buyer app displays a list of invoices queried from GSP, which will be shared with the lenders.
+* The buyer app broadcasts the loan applications to all the lenders via Gateway. Upon receiving the request, lenders create loan applications in their system.
+Registration and Loan Application (Individuals)
+* The borrower - in this case an individual - begins by sharing their PAN, Mobile number, Name, Address, Date of Birth, Salary, Employment type(salaried/self employed) and Company name.
+* Use this consent language before broadcasting the lead to the participating landers.
+* The buyer app broadcasts the loan applications to all the lenders via Gateway. Upon receiving the request, lenders create loan applications in their system.
+Loan underwriting
+* The lenders respond with an offer based on the bureau-only policy, a pre-approved offer, or an offer for their ETB customers where AA is not required.
+* The Buyer app displays offers to the user and gives them the option to go through AA if they want to enhance the offer or explore offers from more lenders.
+* If the user selects an offer at this stage, the Buyer app proceeds with KYC. If the user chooses the option to enhance the offer, the app initiates the AA flow.
+* The buyer app requests the borrower to provide their bank name. This information will be used to enable the selection of supported account aggregators from a comprehensive list.
+* The buyer app requests the lenders to create consent requests at the account aggregator. To initiate the process, the buyer app provides the account aggregator identification (AA id) of the borrower, which should be in the format of {phone_number}@{aa_name}.
+* The lenders respond back with consent handles, a unique id that identifies a particular consent at the account aggregator.
+* The buyer app redirects the borrower to the chosen account aggregator, where they can review and either approve or reject the consent requests. 
+* Once the borrower approves the data pull consent, the account aggregator will notify the lenders, who can then retrieve the borrower's bank account statement.
+* The lender retrieves the borrower's credit file from the credit bureau to further assess the borrower's creditworthiness.
+* The lender underwrites loans and provides offers based on bureau data, bank account statements, and GST data, if the borrower is a sole proprietor. 
+* Lenders will generate invoice-level offers and will decide which invoices they want to fund. It is mandatory for all lenders to use the SIDBI dedupe registry to ensure that the invoice has not already been funded and to update the registry when a loan is disbursed against an invoice.
+* The borrower can choose from the available loan offers presented on the buyer app. Additionally, the borrowers have the flexibility to request a reduced loan amount, if necessary. In such a case, the lenders would provide revised loan offers that take into account the lower requested amount.
+KYC Verification
+* Upon receiving the offer acceptance from the buyer app, the lender initiates the KYC process (if required). Sole proprietors will be requested to provide both individual and entity KYC for loan processing, whereas individuals will only be required to provide individual KYC.
+* The buyer app presents available options to complete individual KYC. Borrowers can select either Aadhar eKYC or Aadhar pull from Digilocker.
+* If the borrower chooses Aadhar eKYC, the lender will perform an offline eKYC process. Alternatively, if the borrower selects Aadhar pull from Digilocker, the lender will initiate a file pull from Digilocker.
+* For entity KYC, the lender retrieves the UDYAM certificate from Digilocker. The buyer app is responsible for capturing the UDYAM certificate number from the borrower and providing it to the lender to enable them to pull the UDYAM certificate
+
+
+Loan amount disbursement
+* The buyer app requests the borrower to share the disbursement account details.
+* The buyer app prompts the borrower to set up eNACH, eMandate or standing instructions. The borrower will be redirected to the lender’s website or a URL provided by the lender to complete this step.
+* The lender shares the loan agreement with the borrower through the buyer app, and the borrower is required to sign it using either clickwrap OTP or Aadhar eSign.
+* The borrower approves        the account monitoring consent created by the lender on the account aggregator.
+* The lender disburses the loan amount and the borrower’s journey ends here.
+Loan pre/late payment
+* The buyer app will enable borrowers to view both active and inactive loans, as well as provide them with the option to view loan details and make prepayments towards any active loans.
+* Buyer application will allow borrowers to take the following actions post the successful disbursal of a loan
+   * Late payment
+   * Part-prepayments
+   * Full repayment
+* On selecting "Late payment", “Foreclosure” or “part-prepay”, a notification (API call essentially) will be sent to the lender. The lender will generate a payment link and share the following information (absolute values, not percentages) with the buyer app for the borrower to review
+   * Amount
+   * Charges
+   * Payment link
+* Lenders will return error if the operation is not supported or the request is not valid
+* Buyer application will display the breakup to the user before redirecting them to the PG url shared by the lender. 
+Additional Requirements
+* The buyer app should allow borrowers to check the status of their loan application and allow them to resume the loan application from where they left off.
+* The buyer app should allow borrowers to update their loan application details or cancel the application unless the loan is already disbursed.
+* Buyer apps can share the finder fee with the lender through the protocol, and this fee can be dynamically adjusted. Lenders can choose to return offers based on whether they agree to the specified finder fee
+Regulatory Requirements
+* Lenders should provide APIs to supply the latest contact details of their customer care and Grievance Redressal Officer, which will then be displayed on the buyer's apps.
+* Please refer to the latest RBI digital lending guidelines for more details.

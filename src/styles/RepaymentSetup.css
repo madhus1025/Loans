@@ -1,0 +1,199 @@
+.repayment-setup-screen {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f5f7fa;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: #3498db;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header-placeholder {
+  width: 20px;
+}
+
+.repayment-content {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+.loan-summary {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #666666;
+}
+
+.summary-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.section-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin-top: 4px;
+}
+
+.accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.account-item.selected {
+  border: 1px solid #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.account-details {
+  flex: 1;
+}
+
+.bank-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.account-number {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 2px;
+}
+
+.ifsc-code {
+  font-size: 12px;
+  color: #888888;
+}
+
+.account-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+}
+
+.account-item.selected .account-checkbox {
+  border-color: #3498db;
+}
+
+.checkbox-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #3498db;
+}
+
+.add-account-button {
+  background: none;
+  border: 1px dashed #3498db;
+  border-radius: 8px;
+  padding: 12px;
+  color: #3498db;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
+.repayment-note {
+  background-color: #f0f7fc;
+  border-left: 3px solid #3498db;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.repayment-note p {
+  margin: 0;
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.repayment-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.continue-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background-color: #cccccc;
+  color: white;
+}
+
+.continue-button.active {
+  background-color: #3498db;
+}

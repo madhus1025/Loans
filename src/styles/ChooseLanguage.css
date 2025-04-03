@@ -1,0 +1,84 @@
+/* Language Selection Screen Styles */
+
+.language-selection-screen {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.language-container {
+  width: 100%;
+  max-width: 100%;
+  background-color: white;
+}
+
+.language-header {
+  padding: 24px 16px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.language-header h1 {
+  margin: 0;
+  color: #333333;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.language-options {
+  padding: 0;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 20px;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-option:active {
+  background-color: #f9f9f9;
+}
+
+.language-option:last-child {
+  border-bottom: none;
+}
+
+.language-option:hover {
+  background-color: #f9f9f9;
+}
+
+.language-name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+}
+
+.language-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.language-name-native {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 2px;
+}
+
+.language-name-english {
+  font-size: 14px;
+  color: #666666;
+}
+
+.language-arrow {
+  color: #cccccc;
+  font-size: 20px;
+}

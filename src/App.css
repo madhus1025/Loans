@@ -1,0 +1,182 @@
+/* Reset some basic elements */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f7fa;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation menu for development/testing */
+.nav-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.navigation-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1001;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navigation-header h2 {
+  color: white;
+  font-size: 20px;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.navigation-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navigation-content button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navigation-content button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navigation-content button.active {
+  background-color: #3498db;
+}
+
+/* Registration styles */
+.registration-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f5f7fa;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration-content {
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 100%;
+  }
+  
+  /* Common container for content areas to maintain reasonable reading width */
+  .content-container {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  /* Make screens more readable on larger devices */
+  .home-screen .home-content,
+  .share-invoices-screen .invoices-content,
+  .select-manager-screen .manager-content,
+  .loan-offers-screen .offers-content,
+  .status-screen .status-content,
+  .loader-screen .loader-content {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Improve card layouts on larger screens */
+  .welcome-card,
+  .invoice-item,
+  .manager-item,
+  .offer-card,
+  .loan-details-container {
+    transition: all 0.2s ease;
+  }
+
+  .welcome-card:hover,
+  .invoice-item:hover,
+  .manager-item:hover,
+  .offer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Additional responsive improvements for larger screens */
+@media (min-width: 1200px) {
+  .managers-list,
+  .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .app-header {
+    padding: 20px 40px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+}

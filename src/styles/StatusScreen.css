@@ -1,0 +1,118 @@
+.status-screen {
+  min-height: 100vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.status-content {
+  width: 100%;
+  max-width: 400px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.status-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 24px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.status-icon.information_shared {
+  background-image: url('/mockups/information_shared.png');
+}
+
+.status-icon.loan_disbursed {
+  background-image: url('/mockups/FTU-29 - Status - Loan disbursed.png');
+}
+
+.status-icon.kyc_completed {
+  background-image: url('/mockups/Status - KYC Completed.png');
+}
+
+.status-icon.success {
+  background-image: url('/mockups/Circle tick.png');
+}
+
+.status-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 12px 0;
+}
+
+.status-subtitle {
+  font-size: 16px;
+  color: #666666;
+  margin: 0 0 32px 0;
+}
+
+.loan-details-container {
+  width: 100%;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+}
+
+.loan-detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.loan-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: #666666;
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.status-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.secondary-button {
+  width: 100%;
+  padding: 16px;
+  background-color: white;
+  color: #3498db;
+  border: 1px solid #3498db;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}

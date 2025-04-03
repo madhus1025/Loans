@@ -1,0 +1,132 @@
+.select-manager-screen {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f5f7fa;
+  font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: #3498db;
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header-placeholder {
+  width: 20px;
+}
+
+.manager-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.instruction-text {
+  font-size: 14px;
+  color: #666666;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.managers-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.manager-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  height: 100px;
+}
+
+.manager-item.selected {
+  border: 2px solid #3498db;
+}
+
+.manager-logo {
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 8px;
+}
+
+.manager-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+}
+
+.check-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+.check-icon::before {
+  content: "✓";
+}
+
+.manager-footer {
+  padding: 16px;
+  border-top: 1px solid #eeeeee;
+  background-color: white;
+}
+
+.continue-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background-color: #cccccc;
+  color: white;
+}
+
+.continue-button.active {
+  background-color: #3498db;
+}
